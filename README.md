@@ -6,7 +6,7 @@ This repository contains runoff data for standardized evaluation of hydrological
 * Period_Calib spans from 1975-10-01 to 1995-09-30
 * Period_Valid spans from 1995-10-01 to 2015-09-30
 
-The stations are used in the flood forecasting service at NVE.
+The selected stations are used in the flood forecasting service at NVE.
 
 The datasets are stored in the folders /Period_Calib and /Period_Valid, and the file Metadata.txt contains additional information about the selected stations.
 
@@ -20,9 +20,11 @@ or:
 
 * clone the repository using `git clone https://github.com/jmgnve/NVE_RUNOFF_TEST_DATA.git`
 
+For windows machines, the second method requires an installation of the program 'Github Desktop' available on 'NVE Programvaresenter'. On linux machines, this software should already be available.
+
 ### Common statistical measures
 
-We use the following measures to judge model performance:
+We use the following measures for judging model performance:
 
 * KGE
 * NSE
@@ -58,7 +60,6 @@ print(res)
 
 ```
 
-
 ### Updating data
 
-The datasets were generated using R code available in the folder /R.
+The datasets were generated using R function load_runoff_data available in the folder /R.

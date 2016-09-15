@@ -27,6 +27,8 @@ We use the following measures to judge model performance:
 * KGE
 * NSE
 
+The code below computes those measures. It uses functions stored in the file R/utils_eval_models.R. Before running the code make sure that the working directory and paths are set correctly.
+
 ```R
 
 # Source files

@@ -1,14 +1,14 @@
 Runoff data for testing hydrological models at NVE
 ==================================================
 
-This repository contains runoff data for two periods:
+This repository contains runoff data for standardized evaluation of hydrological models. We have splitted the data into two periods, one for calibration and the other for validation:
 
-* Period 1 spans from 1975-10-01 to 1995-09-30
-* Period 2 spans from 1995-10-01 to 2015-09-30
+* Period_Calib spans from 1975-10-01 to 1995-09-30
+* Period_Valid spans from 1995-10-01 to 2015-09-30
 
 The stations are used in the flood forecasting service at NVE.
 
-The datasets are stored in the folders /Period1 and /Period2, and the file Metadata.txt contains information about the selected stations.
+The datasets are stored in the folders /Period_Calib and /Period_Valid, and the file Metadata.txt contains additional information about the selected stations.
 
 ### Downloading data
 
@@ -27,7 +27,7 @@ We use the following measures to judge model performance:
 * KGE
 * NSE
 
-The code below computes those measures. It uses functions stored in the file R/utils_eval_models.R. Before running the code make sure that the working directory and paths are set correctly.
+The code below computes those measures excluding the first 3 years which are considered as spinup. It uses functions stored in the file R/utils_eval_models.R. Before running the code make sure that the working directory and paths are set correctly.
 
 ```R
 
@@ -37,7 +37,7 @@ source('utils_eval_models.R')
 
 # Select path and station
 
-path <- "../Period1"
+path <- "../Period_Valid"
 regine_main <- "2.28"
 
 # Load observed runoff

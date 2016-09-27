@@ -10,6 +10,8 @@ The selected stations are used in the flood forecasting service at NVE.
 
 The datasets are stored in the folders /Period_Calib and /Period_Valid, and the file Metadata.txt contains additional information about the selected stations.
 
+The unit for the runoff data stored in the files is m3/day.
+
 ### Downloading data
 
 Download the data by:

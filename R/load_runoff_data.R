@@ -11,7 +11,7 @@ metadata <- get_metadata()
 metadata <- metadata[metadata$br23_HBV == "Y", ]
 regine_main <- metadata$regine_main
 
-path_runoff <- '//hdata/fou/Vannbalansekart/Data/Runoff_All'
+path_runoff <- '//hdata/fou/Avrenningskart/Data/Runoff_All'
 
 
 # Load data for period calib

@@ -10,25 +10,19 @@ We have splitted the data into two periods, one for calibration and the other fo
 
 The selected stations are used in the flood forecasting service at NVE.
 
-The datasets are stored in the folders /Period_Calib and /Period_Valid, and the file Metadata.txt contains additional information about the selected stations.
+The datasets are stored in the folders *Period_Calib* and *Period_Valid*, and the file Metadata.txt contains additional information about the selected stations.
 
 The unit for the runoff data stored in the files is m3/day.
 
 ### Downloading data
 
-Download the data by:
+For downloading the data and code, clone this repository:
 
-* clicking the 'Clone or download' button and select "Download ZIP"
-
-or:
-
-* clone the repository using `git clone https://github.com/jmgnve/NVE_RUNOFF_TEST_DATA.git`
-
-For windows machines, the second method requires an installation of the program 'Github Desktop' available on 'NVE Programvaresenter'. On linux machines, this software should already be available.
+`git clone https://github.com/jmgnve/NVE_RUNOFF_TEST_DATA.git`
 
 ### Run analysis for one model
 
-We compute a standard set of measures for model performance and diagnositics using the following procedure using R.
+We compute a standard set of measures for model performance and diagnositics using the following procedure in R. The results are stored in the directory *Results* and file names are defined by the name and version of the model.
 
 1) Set working directory and source required functions:
 
@@ -40,7 +34,7 @@ source("R/utils_eval.R")
 source("R/utils_data.R")
 ```
 
-2) Add information about the name and version of the model, and also a short description detailing the simulations.
+2) Add information about the name and version of the model, and also a short description of the simulations.
 
 ```R
 model_name <- "hbv"
@@ -48,7 +42,7 @@ model_version <- "0.1"
 model_desc <- "The is a toy example"
 ```
 
-3) Load observed runoff (stored in folder Period_Valid):
+3) Load observed runoff (stored in folder *Period_Valid*):
 
 ```R
 q_obs <- load_runoff_obs()
@@ -56,7 +50,7 @@ q_obs <- load_runoff_obs()
 
 4) Load simulated runoff (here we only generate some toy data):
 
-Create appropriate methods for loading data from your model and add to file R/utils_data.R and update github repository.
+Create appropriate methods for loading data for your model and add to file R/utils_data.R and update this github repository.
 
 ```R
 q_sim <- q_obs
@@ -66,7 +60,7 @@ q_sim[,2:ncol(q_sim)] <- q_sim[,2:ncol(q_sim)] * rnumbers
 
 5) Run model analysis:
 
-This step will save a file with the results in the folder Results/. Update github repository when satisfied.
+This step will save a file with the results in the folder *Results*. Update this github repository when finished.
 
 ```R
 run_evaluation(q_obs, q_sim, model_name, model_version, model_desc)
@@ -86,6 +80,8 @@ We use the following measures for judging model performance:
 
 When computing those measures we exclude the first 3 years which are considered as spinup.
 
+Additions to those metrics can be added to the files R/run_evaluation.R and R/utils_eval.R. Please update this github repository afterwards.
+
 ### Updating data
 
-The datasets in *Period_Calib* and *Period_Valid* were generated using R function prepare_runoff_data available in the folder /R.
+The datasets in *Period_Calib* and *Period_Valid* were generated using R function prepare_runoff_data available in the folder *R*.

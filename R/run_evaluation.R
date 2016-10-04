@@ -108,6 +108,13 @@ run_evaluation <- function(q_obs, q_sim, model_name, model_version, model_desc) 
   cat(model_name, file = filename, sep = "\n")
   cat(model_version, file = filename, sep = "\n", append = TRUE)
   cat(model_desc, file = filename, sep = "\n", append = TRUE)
+  cat("", file = filename, sep = "\n", append = TRUE) # Place holder in case of adding additional info
+  cat("", file = filename, sep = "\n", append = TRUE) # Place holder in case of adding additional info
+  cat("", file = filename, sep = "\n", append = TRUE) # Place holder in case of adding additional info
+  cat("", file = filename, sep = "\n", append = TRUE) # Place holder in case of adding additional info
+  cat("", file = filename, sep = "\n", append = TRUE) # Place holder in case of adding additional info
+  cat("", file = filename, sep = "\n", append = TRUE) # Place holder in case of adding additional info
+  cat("", file = filename, sep = "\n", append = TRUE) # Place holder in case of adding additional info
   
   write.table(res, file = filename, quote = FALSE, sep = "\t", row.names = FALSE, append = TRUE)
   

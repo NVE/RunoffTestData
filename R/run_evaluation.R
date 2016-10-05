@@ -42,6 +42,7 @@ run_evaluation <- function(q_obs, q_sim, model_name, model_version, model_desc) 
   Slope <- c()
   r2 <- c()
   Bias <- c()
+  Pbias<-c()
   
   # Compute performance measures for each station
   

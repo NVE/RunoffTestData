@@ -73,6 +73,7 @@ run_evaluation <- function(q_obs, q_sim, model_name, model_version, model_desc) 
     
     Bias[istat] <- hydroGOF::me(q_sim[, istat], q_obs[, istat])
     
+    Pbias[istat] <- hydroGOF::pbias(q_sim[, istat], q_obs[, istat])    
     
   }
   
@@ -85,6 +86,7 @@ run_evaluation <- function(q_obs, q_sim, model_name, model_version, model_desc) 
   Slope     <- round(Slope, digits = 2)
   r2        <- round(r2, digits = 2)
   Bias      <- round(Bias, digits = 2)
+  Pbias      <- round(Pbias, digits = 2)
   
   # Data frame with outputs
   
@@ -95,8 +97,8 @@ run_evaluation <- function(q_obs, q_sim, model_name, model_version, model_desc) 
                     Intercept = Intercept,
                     Slope     = Slope,
                     r2        = r2,
-                    Bias      = Bias)
-  
+                    Bias      = Bias,
+                    Pbias      = Pbias)  
   # Save data to file
   
   filename = paste("Results", "/", model_name, "_", model_version, ".txt", sep = "")

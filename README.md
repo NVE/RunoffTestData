@@ -77,6 +77,7 @@ We use the following measures for judging model performance:
 * Slope - Slope of linear regression line
 * r2 - Squared correlation coefficient
 * Bias - Mean error between simulation and observation
+* Pbias - Bias in percent between simulation an observation
 
 When computing those measures we exclude the first 3 years which are considered as spinup.
 

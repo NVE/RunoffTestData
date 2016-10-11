@@ -7,9 +7,11 @@
 # model_name - name of the model
 # model_version - version of the model
 # model_desc - additional information about the model
+# model_input - information about model input
+# model_res - information about location of model results
 
 
-run_evaluation <- function(q_obs, q_sim, model_name, model_version, model_desc) {
+run_evaluation <- function(q_obs, q_sim, model_name, model_version, model_desc, model_input, model_res) {
   
   # Required libraries
   
@@ -42,7 +44,7 @@ run_evaluation <- function(q_obs, q_sim, model_name, model_version, model_desc) 
   Slope <- c()
   r2 <- c()
   Bias <- c()
-  Pbias<-c()
+  Pbias <- c()
   
   # Compute performance measures for each station
   
@@ -87,7 +89,7 @@ run_evaluation <- function(q_obs, q_sim, model_name, model_version, model_desc) 
   Slope     <- round(Slope, digits = 2)
   r2        <- round(r2, digits = 2)
   Bias      <- round(Bias, digits = 2)
-  Pbias      <- round(Pbias, digits = 2)
+  Pbias     <- round(Pbias, digits = 2)
   
   # Data frame with outputs
   
@@ -99,7 +101,8 @@ run_evaluation <- function(q_obs, q_sim, model_name, model_version, model_desc) 
                     Slope     = Slope,
                     r2        = r2,
                     Bias      = Bias,
-                    Pbias      = Pbias)  
+                    Pbias     = Pbias)  
+  
   # Save data to file
   
   filename = paste("Results", "/", model_name, "_", model_version, ".txt", sep = "")
@@ -110,14 +113,17 @@ run_evaluation <- function(q_obs, q_sim, model_name, model_version, model_desc) 
   
   model_name <- paste("Model:", model_name)
   model_version <- paste("Version:", model_version)
+  model_period <- paste("Period:", head(time,1), "-", tail(time,1))
   model_desc <- paste("Description:", model_desc)
+  model_input <- paste("Model input", model_input)
+  model_res <- paste("Model input", model_res)
   
   cat(model_name, file = filename, sep = "\n")
   cat(model_version, file = filename, sep = "\n", append = TRUE)
+  cat(model_period, file = filename, sep = "\n", append = TRUE)
   cat(model_desc, file = filename, sep = "\n", append = TRUE)
-  cat("", file = filename, sep = "\n", append = TRUE) # Place holder in case of adding additional info
-  cat("", file = filename, sep = "\n", append = TRUE) # Place holder in case of adding additional info
-  cat("", file = filename, sep = "\n", append = TRUE) # Place holder in case of adding additional info
+  cat(model_input, file = filename, sep = "\n", append = TRUE)
+  cat(model_res, file = filename, sep = "\n", append = TRUE)
   cat("", file = filename, sep = "\n", append = TRUE) # Place holder in case of adding additional info
   cat("", file = filename, sep = "\n", append = TRUE) # Place holder in case of adding additional info
   cat("", file = filename, sep = "\n", append = TRUE) # Place holder in case of adding additional info

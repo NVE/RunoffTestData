@@ -3,6 +3,14 @@ Runoff data for testing hydrological models at NVE
 
 This repository contains (a) runoff data for standardized evaluation of hydrological models and (b) functions for computing metrics for model performance as well as measures useful for diagnosing simulation results.
 
+### Downloading data
+
+For downloading the data and code, clone this repository:
+
+`git clone https://github.com/jmgnve/NVE_RUNOFF_TEST_DATA.git`
+
+### 24h test dataset
+
 We have splitted the data into two periods, one for calibration and the other for validation:
 
 * Period_Calib spans from 2000-09-01 to 2014-12-31
@@ -14,13 +22,7 @@ The datasets are stored in the folders *Period_Calib* and *Period_Valid*, and th
 
 The unit for the runoff data stored in the files is *mm/day*.
 
-### Downloading data
-
-For downloading the data and code, clone this repository:
-
-`git clone https://github.com/jmgnve/NVE_RUNOFF_TEST_DATA.git`
-
-### Run analysis for one model
+### Run analysis for one model (24h dataset)
 
 We compute a standard set of measures for model performance and diagnositics using the following procedure in R. The results are stored in the directory *Results* and file names are defined by the name and version of the model.
 

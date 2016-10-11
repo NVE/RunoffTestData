@@ -92,6 +92,10 @@ The datasets in *Period_Calib* and *Period_Valid* were generated using R functio
 
 ### Links to model input data
 
+Input data with 24h time step:
+
+\\nve\fil\h\HB\HB-modellering\DDDtestbenk\DDD2015\inndata
+
 Input data with 3h time step:
 
 \\nve\fil\h\HB\HB-modellering\DDD3h\inndataV2

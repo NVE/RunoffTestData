@@ -40,11 +40,14 @@ source("R/utils_data.R")
 model_name <- "hbv"
 model_version <- "0.1"
 model_desc <- "The is a toy example"
+model_input <- "SeNorge"
+model_res <- "Local folder on my computer"
 ```
 
 3) Load observed runoff (stored in folder *Period_Valid*):
 
 ```R
+path_obs <- "24h/Period_Valid"
 q_obs <- load_runoff_obs()
 ```
 
@@ -63,7 +66,7 @@ q_sim[,2:ncol(q_sim)] <- q_sim[,2:ncol(q_sim)] * rnumbers
 This step will save a file with the results in the folder *Results*. Update this github repository when finished.
 
 ```R
-run_evaluation(q_obs, q_sim, model_name, model_version, model_desc)
+run_evaluation(q_obs, q_sim, model_name, model_version, model_desc, model_input, model_res)
 ```
 
 ### Common statistical measures

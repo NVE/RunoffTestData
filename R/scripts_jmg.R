@@ -1,7 +1,8 @@
 
 # Path to model results
 
-path_model <- "/hdata/fou/jmg/FloodForecasting/Model/txt"
+path_model <- "//hdata/fou/jmg/FloodForecasting/Model/txt"
+path_obs <- "24h/Period_Valid"
 
 # Source files
 
@@ -14,12 +15,12 @@ source("R/utils_data.R")
 model_name <- "Vann"
 model_version <- "0.1"
 model_desc <- "The is a toy example"
-model_input <- "SeNorge 2.0"
-model_res <- "Local folder on my machine"
+model_input <- "SeNorge"
+model_res <- "Local folder on my computer"
 
 # Load observed runoff
 
-q_obs <- load_runoff_obs(path_obs = "Period_Valid")
+q_obs <- load_runoff_obs(path_obs)
 
 # Load simulated runoff
 

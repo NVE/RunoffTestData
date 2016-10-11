@@ -29,6 +29,10 @@ for (i in 1:length(regine_main)) {
   
   qdata$Value <- (qdata$Value * 86400 * 1000) / (area_total[i] * 1e6)
   
+  # Round values
+  
+  qdata$Value <- round(qdata$Value, digits = 2)
+  
   # Add to data frame
   
   qdf <- data.frame(Time = qdata$Time, Qobs = qdata$Value)
@@ -42,7 +46,7 @@ for (i in 1:length(regine_main)) {
   
   # Save to file
   
-  write.table(qdf, file = paste("../Period_Calib/", regine_main[i], ".txt", sep = ""), sep = "\t", row.names = FALSE, quote = FALSE)
+  write.table(qdf, file = paste("../24h/Period_Calib/", regine_main[i], ".txt", sep = ""), sep = "\t", row.names = FALSE, quote = FALSE)
   
 }
 
@@ -61,6 +65,10 @@ for (i in 1:length(regine_main)) {
   
   qdata$Value <- (qdata$Value * 86400 * 1000) / (area_total[i] * 1e6)
   
+  # Round values
+  
+  qdata$Value <- round(qdata$Value, digits = 2)
+  
   # Add to data frame
   
   qdf <- data.frame(Time = qdata$Time, Qobs = qdata$Value)
@@ -74,7 +82,7 @@ for (i in 1:length(regine_main)) {
   
   # Save to file
   
-  write.table(qdf, file = paste("../Period_Valid/", regine_main[i], ".txt", sep = ""), sep = "\t", row.names = FALSE, quote = FALSE)
+  write.table(qdf, file = paste("../24h/Period_Valid/", regine_main[i], ".txt", sep = ""), sep = "\t", row.names = FALSE, quote = FALSE)
   
 }
 

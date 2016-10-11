@@ -4,7 +4,7 @@
 # Read observed discharge (files in folder Period_Calib and Period_Valid)
 # Returns a data frame with columns Time, Station 1, Station 2 ...
 
-load_runoff_obs <- function(path_obs = "Period_Valid") {
+load_runoff_obs <- function(path_obs) {
   
   files_data <- list.files(path_obs)
   

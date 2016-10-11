@@ -105,7 +105,7 @@ run_evaluation <- function(q_obs, q_sim, model_name, model_version, model_desc, 
   
   # Save data to file
   
-  filename = paste("Results", "/", model_name, "_", model_version, ".txt", sep = "")
+  filename = paste("24h/Results", "/", model_name, "_", model_version, ".txt", sep = "")
   
   if (file.exists(filename)) {
     stop(paste("File ", filename, " already exists. Delete it manually to replace it.", sep = ""))

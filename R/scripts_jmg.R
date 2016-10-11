@@ -14,6 +14,8 @@ source("R/utils_data.R")
 model_name <- "Vann"
 model_version <- "0.1"
 model_desc <- "The is a toy example"
+model_input <- "SeNorge 2.0"
+model_res <- "Local folder on my machine"
 
 # Load observed runoff
 
@@ -25,4 +27,4 @@ q_sim <- load_vann_res(path_model)
 
 # Run analysis
 
-run_evaluation(q_obs, q_sim, model_name, model_version, model_desc)
+run_evaluation(q_obs, q_sim, model_name, model_version, model_desc, model_input, model_res)

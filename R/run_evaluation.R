@@ -113,10 +113,10 @@ run_evaluation <- function(q_obs, q_sim, model_name, model_version, model_desc, 
   
   model_name <- paste("Model:", model_name)
   model_version <- paste("Version:", model_version)
-  model_period <- paste("Period:", head(time,1), "-", tail(time,1))
+  model_period <- paste("Period:", head(time,1), "to", tail(time,1))
   model_desc <- paste("Description:", model_desc)
-  model_input <- paste("Model input", model_input)
-  model_res <- paste("Model input", model_res)
+  model_input <- paste("Model input:", model_input)
+  model_res <- paste("Path to model results:", model_res)
   
   cat(model_name, file = filename, sep = "\n")
   cat(model_version, file = filename, sep = "\n", append = TRUE)

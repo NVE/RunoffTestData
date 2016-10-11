@@ -17,7 +17,7 @@ path_runoff <- '//hdata/fou/Avrenningskart/Data/Runoff_All'
 
 # Load data for period calib
 
-time_vec <- seq(ymd("1975-10-01"), ymd("1995-09-30"), by = "days")
+time_vec <- seq(ymd("2000-09-01"), ymd("2014-12-31"), by = "days")
 
 for (i in 1:length(regine_main)) {
   
@@ -53,7 +53,7 @@ for (i in 1:length(regine_main)) {
 
 # Load data for period valid
 
-time_vec <- seq(ymd("1995-10-01"), ymd("2015-09-30"), by = "days")
+time_vec <- seq(ymd("1985-09-01"), ymd("2000-08-31"), by = "days")
 
 for (i in 1:length(regine_main)) {
   

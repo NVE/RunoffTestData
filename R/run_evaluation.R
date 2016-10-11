@@ -114,6 +114,7 @@ run_evaluation <- function(q_obs, q_sim, model_name, model_version, model_desc, 
   model_name <- paste("Model:", model_name)
   model_version <- paste("Version:", model_version)
   model_period <- paste("Period:", head(time,1), "to", tail(time,1))
+  file_created <- paste("Time of file generation:", Sys.time())
   model_desc <- paste("Description:", model_desc)
   model_input <- paste("Model input:", model_input)
   model_res <- paste("Path to model results:", model_res)
@@ -121,10 +122,10 @@ run_evaluation <- function(q_obs, q_sim, model_name, model_version, model_desc, 
   cat(model_name, file = filename, sep = "\n")
   cat(model_version, file = filename, sep = "\n", append = TRUE)
   cat(model_period, file = filename, sep = "\n", append = TRUE)
+  cat(file_created, file = filename, sep = "\n", append = TRUE)
   cat(model_desc, file = filename, sep = "\n", append = TRUE)
   cat(model_input, file = filename, sep = "\n", append = TRUE)
   cat(model_res, file = filename, sep = "\n", append = TRUE)
-  cat("", file = filename, sep = "\n", append = TRUE) # Place holder in case of adding additional info
   cat("", file = filename, sep = "\n", append = TRUE) # Place holder in case of adding additional info
   cat("", file = filename, sep = "\n", append = TRUE) # Place holder in case of adding additional info
   cat("", file = filename, sep = "\n", append = TRUE) # Place holder in case of adding additional info

@@ -1,9 +1,9 @@
 Model: Vann
 Version: 0.1
+Period: 1998-09-29 - 2015-09-30
 Description: The is a toy example
-
-
-
+Model input: SeNorge 2.0
+Path to model results: Local folder on my machine
 
 
 

@@ -5,8 +5,8 @@ This repository contains (a) runoff data for standardized evaluation of hydrolog
 
 We have splitted the data into two periods, one for calibration and the other for validation:
 
-* Period_Calib spans from 1975-10-01 to 1995-09-30
-* Period_Valid spans from 1995-10-01 to 2015-09-30
+* Period_Calib spans from 2000-09-01 to 2014-12-31
+* Period_Valid spans from 1985-09-01 to 2000-08-31
 
 The selected stations are used in the flood forecasting service at NVE.
 

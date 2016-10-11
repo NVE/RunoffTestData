@@ -10,6 +10,7 @@ library(lubridate)
 metadata <- get_metadata()
 metadata <- metadata[metadata$br23_HBV == "Y", ]
 regine_main <- metadata$regine_main
+area_total <- metadata$area_total
 
 path_runoff <- '//hdata/fou/Avrenningskart/Data/Runoff_All'
 
@@ -23,6 +24,10 @@ for (i in 1:length(regine_main)) {
   # Read runoff data
   
   qdata <- read_runoff_file(path_runoff, metadata$obs_series[i])
+  
+  # Convert to mm/day
+  
+  qdata$Value <- (qdata$Value * 86400 * 1000) / (area_total[i] * 1e6)
   
   # Add to data frame
   
@@ -51,6 +56,10 @@ for (i in 1:length(regine_main)) {
   # Read runoff data
   
   qdata <- read_runoff_file(path_runoff, metadata$obs_series[i])
+  
+  # Convert to mm/day
+  
+  qdata$Value <- (qdata$Value * 86400 * 1000) / (area_total[i] * 1e6)
   
   # Add to data frame
   

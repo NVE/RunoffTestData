@@ -48,7 +48,7 @@ model_res <- "Local folder on my computer"
 
 ```R
 path_obs <- "24h/Period_Valid"
-q_obs <- load_runoff_obs()
+q_obs <- load_runoff_obs(path_obs)
 ```
 
 4) Load simulated runoff (here we only generate some toy data):

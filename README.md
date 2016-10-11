@@ -87,9 +87,9 @@ Additions to those metrics can be added to the files R/run_evaluation.R and R/ut
 
 The datasets in *Period_Calib* and *Period_Valid* were generated using R function prepare_runoff_data available in the folder *R*.
 
-### Input data to models
+### Links to model input data
 
-Input data 3h time step:
+Input data with 3h time step:
 
 \\nve\fil\h\HB\HB-modellering\DDD3h\inndataV2
 

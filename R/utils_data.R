@@ -31,9 +31,9 @@ load_runoff_obs <- function(path_obs = "Period_Valid") {
 }
 
 
-# Read simulated discharge from Jhydro models
+# Read simulated discharge from Vann models
 
-load_jhydro_res <- function(path_model) {
+load_vann_res <- function(path_model) {
   
   files_data <- list.files(path_model)
   

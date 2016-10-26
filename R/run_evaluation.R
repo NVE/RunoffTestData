@@ -9,9 +9,9 @@
 # model_desc - additional information about the model
 # model_input - information about model input
 # model_res - information about location of model results
+# period - calibration or validation period ("calib" or "valid")
 
-
-run_evaluation <- function(q_obs, q_sim, model_name, model_version, model_desc, model_input, model_res) {
+run_evaluation <- function(q_obs, q_sim, model_name, model_version, model_desc, model_input, model_res, period) {
   
   # Required libraries
   
@@ -19,8 +19,8 @@ run_evaluation <- function(q_obs, q_sim, model_name, model_version, model_desc, 
   
   # Stop if data frames do not contain identical time steps and stations
   
-  stopifnot(all.equal(q_sim$Time, q_obs$Time))
-  stopifnot(all.equal(colnames(q_sim), colnames(q_obs)))
+  stopifnot(identical(q_sim$Time, q_obs$Time))
+  stopifnot(identical(colnames(q_sim), colnames(q_obs)))
   
   # Evaluation period
   
@@ -105,7 +105,7 @@ run_evaluation <- function(q_obs, q_sim, model_name, model_version, model_desc, 
   
   # Save data to file
   
-  filename = paste("24h/Results", "/", model_name, "_", model_version, ".txt", sep = "")
+  filename = paste("24h/results", "_", period, "/", model_name, "_", model_version, ".txt", sep = "")
   
   if (file.exists(filename)) {
     stop(paste("File ", filename, " already exists. Delete it manually to replace it.", sep = ""))

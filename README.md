@@ -3,28 +3,28 @@ Runoff data for testing hydrological models at NVE
 
 This repository contains:
 
-* Runoff data for standardized evaluation of hydrological models (see folder [/24h/qobs_valid](https://github.com/jmgnve/RunoffTestData/tree/master/24h/qobs_valid))
-* Functions for computing metrics for model performance (see folder [/R](https://github.com/jmgnve/RunoffTestData/tree/master/R))
-* Summary results for different models (see folder [/24h/results_valid](https://github.com/jmgnve/RunoffTestData/tree/master/24h/results_valid))
+* Runoff data for standardized evaluation of hydrological models (see folders [/24h/qobs_calib](https://github.com/NVE/RunoffTestData/tree/master/24h/qobs_calib) and [/24h/qobs_valid](https://github.com/NVE/RunoffTestData/tree/master/24h/qobs_valid))
+* Functions for computing model performance metrics (see folder [/R](https://github.com/NVE/RunoffTestData/tree/master/R))
+* Summary results for different models (see folders [/24h/results_calib](https://github.com/NVE/RunoffTestData/tree/master/24h/results_calib) and [/24h/results_valid](https://github.com/NVE/RunoffTestData/tree/master/24h/results_valid))
 
-
+New model versions can be tested as described below (see also example model output data and analysis script in this folder [/Example](https://github.com/NVE/RunoffTestData/tree/master/Example).
 
 ### Downloading data
 
 For downloading the data and code, clone this repository:
 
-`git clone https://github.com/jmgnve/NVE_RUNOFF_TEST_DATA.git`
+`git clone https://github.com/NVE/RunoffTestData.git`
 
 ### 24h test dataset
 
-We have splitted the data into two periods, one for calibration and the other for validation:
+We have splitted the runoff data into two periods, one for calibration and the other for validation:
 
 * Period_Calib spans from 2000-09-01 to 2014-12-31
 * Period_Valid spans from 1985-09-01 to 2000-08-31
 
 The selected stations are used in the flood forecasting service at NVE.
 
-The datasets are stored in the folders *Period_Calib* and *Period_Valid*, and the file Metadata.txt contains additional information about the selected stations.
+The datasets are stored in the folders mentioned above, and the file Metadata.txt contains additional information about the selected stations.
 
 The unit for the runoff data stored in the files is *mm/day*.
 

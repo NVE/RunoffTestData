@@ -2,36 +2,45 @@
 
 rm(list=ls())
 
-# Filename for saving the evaluation results
-
-model_name <- "hbv"
-model_version <- "0.1"
-model_desc <- "The is a toy example"
-
 # Source required functions
 
 source("R/run_evaluation.R")
 source("R/utils_eval.R")
 source("R/utils_data.R")
 
+# Add information about your model
+
+model_name <- "model_name"
+model_version <- "0.1"
+model_desc <- "The is a toy example"
+model_input <- "SeNorge"
+model_res <- "Local folder on my computer"
+
+# Run analysis for calibration period
+
+period <- "calib"
+
+# Path to observation data and simulation results
+
+path_obs <- "24h/qobs_calib"
+
+path_sim <- "Example/calib_txt"
+
 # Load observed runoff
 
-q_obs <- load_runoff_obs()
+q_obs <- load_runoff_obs(path_obs)
 
-# Generate some simulated runoff
+# Load simulated runoff (only keep those who match observations)
 
-q_sim <- q_obs
+q_sim <- load_vann_res(path_sim)
 
-rnumbers <- matrix(runif(length(q_sim[,2:ncol(q_sim)]), min = 0.8, max = 1.2), nrow(q_sim), ncol(q_sim)-1)
+ikeep <- which(colnames(q_sim) %in% colnames(q_obs))
 
-q_sim[,2:ncol(q_sim)] <- q_sim[,2:ncol(q_sim)] * rnumbers
+q_sim <- q_sim[, ikeep]
 
-# Compute performance measures
+# Run analysis
 
-run_evaluation(q_obs, q_sim, model_name, model_version, model_desc)
-
-
-
+run_evaluation(q_obs, q_sim, model_name, model_version, model_desc, model_input, model_res, period)
 
 
 

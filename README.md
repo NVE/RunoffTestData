@@ -7,7 +7,7 @@ This repository contains:
 * Functions for computing model performance metrics (see folder [/R](https://github.com/NVE/RunoffTestData/tree/master/R))
 * Summary results for different models (see folders [/24h/results_calib](https://github.com/NVE/RunoffTestData/tree/master/24h/results_calib) and [/24h/results_valid](https://github.com/NVE/RunoffTestData/tree/master/24h/results_valid))
 
-New model versions can be tested as described below (see also example model output data and analysis script in this folder [/Example](https://github.com/NVE/RunoffTestData/tree/master/Example).
+New model versions can be tested as described below (see also example model output data and analysis script in this folder [/Example](https://github.com/NVE/RunoffTestData/tree/master/Example)).
 
 ### Downloading data
 
@@ -19,8 +19,8 @@ For downloading the data and code, clone this repository:
 
 We have splitted the runoff data into two periods, one for calibration and the other for validation:
 
-* Period_Calib spans from 2000-09-01 to 2014-12-31
-* Period_Valid spans from 1985-09-01 to 2000-08-31
+* The calibration period spans from 2000-09-01 to 2014-12-31
+* The validation period spans from 1985-09-01 to 2000-08-31
 
 The selected stations are used in the flood forecasting service at NVE.
 
@@ -30,11 +30,11 @@ The unit for the runoff data stored in the files is *mm/day*.
 
 ### Run analysis for one model (24h dataset)
 
-We compute a standard set of measures for model performance and diagnositics using the following procedure in R. The results are stored in the directory *Results* and file names are defined by the name and version of the model.
+We compute a standard set of measures for model performance and diagnositics using the following procedure in R. The results are stored in the directories [/24h/results_calib](https://github.com/NVE/RunoffTestData/tree/master/24h/results_calib) and [/24h/results_valid](https://github.com/NVE/RunoffTestData/tree/master/24h/results_valid) and file names are defined by the name and version of the model.
 
 1) Set working directory and source required functions:
 
-Set the working directory to the folder NVE_RUNOFF_TEST_DATA.
+Set the working directory to the folder RunoffTestData.
 
 ```R
 source("R/run_evaluation.R")
@@ -42,39 +42,53 @@ source("R/utils_eval.R")
 source("R/utils_data.R")
 ```
 
-2) Add information about the name and version of the model, and also a short description of the simulations.
+2) Add information about your model:
 
 ```R
-model_name <- "hbv"
+model_name <- "model_name"
 model_version <- "0.1"
 model_desc <- "The is a toy example"
 model_input <- "SeNorge"
 model_res <- "Local folder on my computer"
 ```
 
-3) Load observed runoff (stored in folder *Period_Valid*):
+3) Run the analysis for the calibration period:
+
+If you want to run the evaluation for the validation period, set period = "valid".
 
 ```R
-path_obs <- "24h/Period_Valid"
+period <- "calib"
+```
+
+4) Define paths to observation data and simulation results:
+
+```R
+path_obs <- "24h/qobs_calib"
+path_sim <- "Example/calib_txt"
+```
+
+5) Load observed runoff:
+
+```R
 q_obs <- load_runoff_obs(path_obs)
 ```
 
-4) Load simulated runoff (here we only generate some toy data):
+6) Load simulated runoff (only keep those stations that match available observations):
 
-Create appropriate methods for loading data for your model and add to file R/utils_data.R and update this github repository.
+Create appropriate methods for loading data from your model and add to file R/utils_data.R and update this github repository.
 
 ```R
-q_sim <- q_obs
-rnumbers <- matrix(runif(length(q_sim[,2:ncol(q_sim)]), min = 0.8, max = 1.2), nrow(q_sim), ncol(q_sim)-1)
-q_sim[,2:ncol(q_sim)] <- q_sim[,2:ncol(q_sim)] * rnumbers
+q_sim <- load_vann_res(path_sim)
+ikeep <- which(colnames(q_sim) %in% colnames(q_obs))
+q_sim <- q_sim[, ikeep]
 ```
 
-5) Run model analysis:
+7) Run model analysis:
 
-This step will save a file with the results in the folder *Results*. Update this github repository when finished.
+This step will save a file with the results in the folder [/24h/results_calib](https://github.com/NVE/RunoffTestData/tree/master/24h/results_calib). Repeat steps 3 to 7 for the validation period. Update this github repository when finished.
 
 ```R
-run_evaluation(q_obs, q_sim, model_name, model_version, model_desc, model_input, model_res)
+run_evaluation(q_obs, q_sim, model_name, model_version, model_desc, model_input, model_res, period)
 ```
 
 ### Common statistical measures
@@ -96,7 +110,7 @@ Additions to those metrics can be added to the files R/run_evaluation.R and R/ut
 
 ### Updating data
 
-The datasets in *Period_Calib* and *Period_Valid* were generated using R function prepare_runoff_data available in the folder *R*.
+The runoff datasets were generated using R function prepare_runoff_data available in the folder */R*.
 
 ### Links to model input data
 

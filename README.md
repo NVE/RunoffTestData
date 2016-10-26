@@ -9,6 +9,8 @@ This repository contains:
 
 New model versions can be tested as described below (see also example model output data and analysis script in this folder [/Example](https://github.com/NVE/RunoffTestData/tree/master/Example)).
 
+The figures in this [link](https://github.com/NVE/RunoffTestData/blob/master/Example_Result.pdf) shows an example of how we can evaluate the results stored in this repository (the function for generating those plots are in the /R folder).
+
 ### Downloading data
 
 For downloading the data and code, clone this repository:

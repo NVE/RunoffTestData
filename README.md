@@ -1,7 +1,13 @@
 Runoff data for testing hydrological models at NVE
 ==================================================
 
-This repository contains (a) runoff data for standardized evaluation of hydrological models and (b) functions for computing metrics for model performance as well as measures useful for diagnosing simulation results.
+This repository contains:
+
+* Runoff data for standardized evaluation of hydrological models (see folder [/24h/qobs_valid](https://github.com/jmgnve/RunoffTestData/tree/master/24h/qobs_valid))
+* Functions for computing metrics for model performance (see folder [/R](https://github.com/jmgnve/RunoffTestData/tree/master/R))
+* Summary results for different models (see folder [/24h/results_valid](https://github.com/jmgnve/RunoffTestData/tree/master/24h/results_valid))
+
+
 
 ### Downloading data
 

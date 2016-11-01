@@ -11,7 +11,7 @@ stat_keep <- c("103.1", "103.40", "104.23", "105.1", "107.3", "109.29",
                "109.42", "109.9", "112.8", "12.150", "12.171", "12.178", "12.192", 
                "12.193", "12.209", "12.215", "12.286", "12.290", "12.70", "12.97", 
                "121.20", "122.11", "122.17", "122.9", "123.31", "124.2", "127.11", 
-               "127.13", "133.7", "138.1", "139.15", "139.35", "148.2", "15.15", 
+               "127.13", "133.7", "138.1", "139.15", "139.35", "148.2",
                "15.21", "15.49", "15.53", "15.79", "151.15", "152.4", "156.10", 
                "157.3", "16.122", "16.132", "16.140", "16.193", "16.66", "16.75", 
                "160.7", "161.7", "162.3", "163.5", "165.6", "168.2", "173.8", 
@@ -67,7 +67,7 @@ for (i in 1:length(regine_main)) {
   
   # Save to file
   
-  write.table(qdf_calib, file = paste("../24h/Period_Calib/", regine_main[i], ".txt", sep = ""), sep = "\t", row.names = FALSE, quote = FALSE)
+  write.table(qdf_calib, file = paste("../24h/qobs_calib/", regine_main[i], ".txt", sep = ""), sep = "\t", row.names = FALSE, quote = FALSE)
   
 }
 
@@ -103,7 +103,7 @@ for (i in 1:length(regine_main)) {
   
   # Save to file
   
-  write.table(qdf_valid, file = paste("../24h/Period_Valid/", regine_main[i], ".txt", sep = ""), sep = "\t", row.names = FALSE, quote = FALSE)
+  write.table(qdf_valid, file = paste("../24h/qobs_valid/", regine_main[i], ".txt", sep = ""), sep = "\t", row.names = FALSE, quote = FALSE)
   
 }
 

@@ -1,4 +1,10 @@
+# Set working directory to correct folder
 
+setwd("C:/Users/jmg/Dropbox/Work/Rcode/RunoffTestData")
+
+# Libraries
+
+library(tcltk)
 
 # Source files
 
@@ -6,20 +12,17 @@ source("R/run_evaluation.R")
 source("R/utils_eval.R")
 source("R/utils_data.R")
 
+# Path to model results
+
+path_model <- tk_choose.dir(default = "C:/Users/jmg/Dropbox/Work/VannData/")
 
 # Describe model
 
-model_name <- "Vann"
-model_version <- "0.1"
-model_desc <- "The is a toy example"
-model_input <- "SeNorge"
-model_res <- "Local folder on my computer"
-
-
-# Path to model results
-
-path_model <- "//hdata/fou/jmg/FloodForecasting/Results/"
-
+model_name <- readline("Name of the model? ")
+model_version <- readline("Version of the model? ")
+model_desc <- readline("Additional description? ")
+model_input <- readline("Input data? ")
+model_res <- readline("Path to model results? ")
 
 ### Run analysis for calibration period ###
 
@@ -29,7 +32,7 @@ period <- "calib"
 
 path_obs <- paste("24h/qobs_", period, sep = "")
 
-path_sim <- paste(path_model, period, "_txt", sep = "")
+path_sim <- paste(path_model, "/", period, "_txt", sep = "")
 
 # Load observed runoff
 
@@ -56,7 +59,7 @@ period <- "valid"
 
 path_obs <- paste("24h/qobs_", period, sep = "")
 
-path_sim <- paste(path_model, period, "_txt", sep = "")
+path_sim <- paste(path_model, "/", period, "_txt", sep = "")
 
 # Load observed runoff
 

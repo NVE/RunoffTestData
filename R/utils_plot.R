@@ -4,7 +4,7 @@
 #
 # Required inputs:
 #
-# path - Path to model results
+# path_testdata - Path to model results
 # model - Name and version of model (see files in folders /24h/results_calib and /24h/results_valid)
 # path_save - name of folder to store the results
 
@@ -16,8 +16,8 @@ plot_results <- function(path_testdata, model, path_save) {
   
   # Load data into data frame
   
-  df_calib <- read.table(paste(path, "24h/results_calib/", model, ".txt", sep = ""), skip = 10, header = TRUE)
-  df_valid <- read.table(paste(path, "24h/results_valid/", model, ".txt", sep = ""), skip = 10, header = TRUE)
+  df_calib <- read.table(paste(path_testdata, "/24h/results_calib/", model, ".txt", sep = ""), skip = 10, header = TRUE)
+  df_valid <- read.table(paste(path_testdata, "/24h/results_valid/", model, ".txt", sep = ""), skip = 10, header = TRUE)
   
   df_calib$period <- "calib"
   df_valid$period <- "valid"

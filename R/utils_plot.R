@@ -112,3 +112,157 @@ plot_results <- function(path_testdata, model, path_save) {
   dev.off()
   
 }
+
+
+# Plot evaluation for all models
+#
+# Required inputs:
+#
+# path_testdata - Path to model results
+# path_save - Name of folder to store the results
+# file_save - Name of the file
+
+plot_boxplots <- function(path_testdata, path_save, file_save) {
+  
+  # Set working directory to correct folder
+  
+  setwd(path_testdata)
+  
+  # Libraries
+  
+  library(ggplot2)
+  library(tcltk)
+  
+  # Function for loading all data
+  
+  read_data <- function(path_calib) {
+    
+    files_calib <- list.files(path_calib)
+    
+    df_all <- c()
+    
+    for (file in files_calib) {
+      
+      df_tmp <- read.table(file.path(path_calib, file), header = TRUE, skip = 10)
+      
+      df_tmp$Model <- substr(file, 1, nchar(file)-4)
+      
+      df_all <- rbind(df_all, df_tmp)
+      
+    }
+    
+    return(df_all)
+    
+  }
+  
+  # Function for plotting all data
+  
+  plot_all <- function(df_all, plot_title) {
+    
+    # Plot KGE
+    
+    a <- ggplot(data = df_all, aes(x = Model, y = KGE))
+    
+    a <- a + geom_boxplot(outlier.colour = "red", fill = "white", colour = "blue")
+    
+    a <- a + ylim(min(min(df_all$KGE)-0.1, 0), 1.1)
+    
+    a <- a + ggtitle(plot_title)
+    
+    print(a)
+    
+    # Plot NSE
+    
+    a <- ggplot(data = df_all, aes(x = Model, y = NSE))
+    
+    a <- a + geom_boxplot(outlier.colour = "red", fill = "white", colour = "blue")
+    
+    a <- a + ylim(min(min(df_all$NSE)-0.1, 0), 1.1)
+    
+    a <- a + ggtitle(plot_title)
+    
+    print(a)
+    
+    # Plot NSE_bench
+    
+    a <- ggplot(data = df_all, aes(x = Model, y = NSE_bench))
+    
+    a <- a + geom_boxplot(outlier.colour = "red", fill = "white", colour = "blue")
+    
+    a <- a + ylim(min(min(df_all$NSE_bench)-0.1, 0), 1.1)
+    
+    a <- a + ggtitle(plot_title)
+    
+    print(a)
+    
+    # Plot Intercept
+    
+    a <- ggplot(data = df_all, aes(x = Model, y = Intercept))
+    
+    a <- a + geom_boxplot(outlier.colour = "red", fill = "white", colour = "blue")
+    
+    a <- a + ggtitle(plot_title)
+    
+    print(a)
+    
+    # Plot Slope
+    
+    a <- ggplot(data = df_all, aes(x = Model, y = Slope))
+    
+    a <- a + geom_boxplot(outlier.colour = "red", fill = "white", colour = "blue")
+    
+    a <- a + ggtitle(plot_title)
+    
+    print(a)
+    
+    # Plot r2
+    
+    a <- ggplot(data = df_all, aes(x = Model, y = r2))
+    
+    a <- a + geom_boxplot(outlier.colour = "red", fill = "white", colour = "blue")
+    
+    a <- a + ggtitle(plot_title)
+    
+    print(a)
+    
+    # Plot Pbias
+    
+    a <- ggplot(data = df_all, aes(x = Model, y = Pbias))
+    
+    a <- a + geom_boxplot(outlier.colour = "red", fill = "white", colour = "blue")
+    
+    a <- a + ggtitle(plot_title)
+    
+    print(a)
+    
+  }
+  
+  # Save all plots to one pdf
+  
+  pdf(file.path(path_save, paste(file_save, ".pdf", sep = "")), width=10, height=6, paper='special') 
+  
+  # Plot results for calibration period
+  
+  plot_title <- "Calibration period"
+  
+  path_calib <- "24h/results_calib"
+  
+  df_all <- read_data(path_calib)
+  
+  plot_all(df_all, plot_title)
+  
+  # Plot results for validation period
+  
+  plot_title <- "Validation period"
+  
+  path_valid <- "24h/results_valid"
+  
+  df_all <- read_data(path_valid)
+  
+  plot_all(df_all, plot_title)
+  
+  dev.off()
+  
+}
+
+

@@ -119,7 +119,28 @@ plot_one_run <- function(path_testdata = "C:/Users/jmg/Dropbox/Work/Rcode/Runoff
 }
 
 
+# Plot results from all model runs
+
+plot_all_runs <- function(path_testdata = "C:/Users/jmg/Dropbox/Work/Rcode/RunoffTestData") {
   
+  # Libraries
+  
+  library(tcltk)
+  
+  # Source files
+  
+  source("R/utils_plot.R")
+  
+  # Get paths
+  
+  path_save <- tk_choose.dir("C:/Users/jmg/Dropbox/Work/VannData/", "Folder for saving data")
+  
+  file_save <- readline("Name of the file? ")
+  
+  plot_boxplots(path_testdata, path_save, file_save)
+  
+}
+
 
 
 

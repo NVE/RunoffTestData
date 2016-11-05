@@ -50,9 +50,27 @@ run_evaluation <- function(q_obs, q_sim, model_name, model_version, model_desc, 
   
   for (istat in 1:ncol(q_obs)) {
     
-    # Compute KGE
+    # Compute original KGE (Gupta2009)
     
-    KGE[istat] <- hydroGOF::KGE(q_sim[, istat], q_obs[, istat], na.rm=TRUE)
+    KGE2009_tmp <- hydroGOF::KGE(q_sim[, istat], q_obs[, istat], na.rm=TRUE, method="2009", out.type = "full")
+    
+    KGE2009[istat] <- KGE2009_tmp$KGE.value
+    
+    # Compute modified KGE (Kling2012)
+    
+    KGE2012_tmp <- hydroGOF::KGE(q_sim[, istat], q_obs[, istat], na.rm=TRUE, method="2012", out.type = "full")
+    
+    KGE2012[istat] <- KGE2012_tmp$KGE.value
+    
+    # Get components of KGE
+    
+    r[istat] <- KGE2012_tmp$KGE.elements[1]
+    
+    Alpha[istat] <- KGE2009_tmp$KGE.elements[2]
+    
+    Beta[istat] <- KGE2012_tmp$KGE.elements[2]
+    
+    Gamma[istat] <- KGE2012_tmp$KGE.elements[3]
     
     # Compute NSE
     
@@ -82,7 +100,12 @@ run_evaluation <- function(q_obs, q_sim, model_name, model_version, model_desc, 
   
   # Round results
   
-  KGE       <- round(KGE, digits = 2)
+  KGE2009   <- round(KGE2009, digits = 2)
+  KGE2012   <- round(KGE2012, digits = 2)
+  r         <- round(r, digits = 2)
+  Alpha     <- round(Alpha, digits = 2)
+  Beta      <- round(Beta, digits = 2)
+  Gamma     <- round(Gamma, digits = 2)
   NSE       <- round(NSE, digits = 2)
   NSE_bench <- round(NSE_bench, digits = 2)
   Intercept <- round(Intercept, digits = 2)
@@ -94,7 +117,12 @@ run_evaluation <- function(q_obs, q_sim, model_name, model_version, model_desc, 
   # Data frame with outputs
   
   res <- data.frame(Station   = colnames(q_obs),
-                    KGE       = KGE,
+                    KGE2009   = KGE2009,
+                    KGE2012   = KGE2012,
+                    r         = r,
+                    Beta      = Beta,
+                    Alpha     = Alpha,
+                    Gamma     = Gamma,
                     NSE       = NSE,
                     NSE_bench = NSE_bench,
                     Intercept = Intercept,

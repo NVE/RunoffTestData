@@ -1,5 +1,5 @@
 # Clear workspace
-
+setwd('C:/Users/koe/Documents/RunoffTestData')
 rm(list=ls())
 
 # Source required functions
@@ -10,9 +10,9 @@ source("R/utils_data.R")
 
 # Add information about your model
 
-model_name <- "model_name"
+model_name <- "HBV"
 model_version <- "0.1"
-model_desc <- "The is a toy example"
+model_desc <- "Original version"
 model_input <- "SeNorge"
 model_res <- "Local folder on my computer"
 
@@ -24,7 +24,7 @@ period <- "calib"
 
 path_obs <- "24h/qobs_calib"
 
-path_sim <- "Example/calib_txt"
+path_sim <- "../VANN/201611101255_Results/calib_txt"
 
 # Load observed runoff
 
@@ -44,3 +44,4 @@ run_evaluation(q_obs, q_sim, model_name, model_version, model_desc, model_input,
 
 
 
+201611110708_Results

@@ -38,6 +38,12 @@ run_evaluation <- function(q_obs, q_sim, model_name, model_version, model_desc, 
   # Allocation of outputs
   
   KGE <- c()
+  KGE2009 <- c()
+  KGE2012 <- c()
+  r <- c()
+  Alpha <- c()
+  Beta <- c()
+  Gamma <- c()
   NSE <- c()
   NSE_bench <- c()
   Intercept <- c()

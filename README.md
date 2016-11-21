@@ -97,7 +97,12 @@ run_evaluation(q_obs, q_sim, model_name, model_version, model_desc, model_input,
 
 We use the following measures for judging model performance:
 
-* KGE - Kling Gupta efficiency
+* KGE2009 - Original Kling Gupta efficiency (see paper by Gupta from 2009)
+* KGE2012 - Modified Kling Gupta efficiency (see paper by Kling from 2012)
+* r - Pearson product-moment correlation coefficient. Ideal value is r=1
+* Beta -  Ratio between the mean of the simulated values and the mean of the observed ones. Ideal value is Beta=1. 
+* Alpha - Ratio between the standard deviation of the simulated values and the standard deviation of the observed ones. Ideal value is Alpha=1
+* Gamma - Ratio between the coefficient of variation (CV) of the simulated values to the coefficient of variation of the observed ones. Ideal value is Gamma=1
 * NSE - Nash Sutcliffe efficiency
 * NSE_bench - Nash Sutcliffe efficiency with baseline model defined by average discharge for every calender month
 * Intercept - Intercept of linear regression line

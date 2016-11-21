@@ -64,8 +64,34 @@ load_vann_res <- function(path_model) {
 }
 
 
+# Read simulated discharge from HBV models
 
-
-
+load_hbv_res <- function(path_model) {
+  
+  files_data <- list.files(path_model)
+  
+  files_data <- sort(files_data)
+  
+  list_data <- vector("list", length(files_data))
+  
+  for (ifile in 1:length(files_data)) {
+    
+    tmp <- read.table(paste(path_model, "/", files_data[ifile], sep = ""), header = TRUE)
+    
+    list_data[[ifile]]$q_sim <- tmp$Qim_m3s
+    
+  }
+  
+  q_mat <- sapply(list_data, function(tmp) tmp$q_sim)
+  
+  q_sim <- data.frame(as.Date(tmp$dato), q_mat)
+  
+  station_names <- gsub(".Qsim_mm.txt", "", files_data)
+  
+  colnames(q_sim) <- c("Time", station_names)
+  
+  return(q_sim)
+  
+}
 
 

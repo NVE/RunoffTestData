@@ -135,17 +135,19 @@ plot_boxplots <- function(path_testdata, path_save, file_save) {
   
   # Function for loading all data
   
-  read_data <- function(path_calib) {
+  read_data <- function(path_data, files_data) {
     
-    files_calib <- list.files(path_calib)
+    # files_data <- list.files(path_data)
+    
+    # files_data <- tk_choose.files(path_data)
     
     df_all <- c()
     
-    for (file in files_calib) {
+    for (file in files_data) {
       
-      df_tmp <- read.table(file.path(path_calib, file), header = TRUE, skip = 10)
+      df_tmp <- read.table(file.path(path_data, basename(file)), header = TRUE, skip = 10)
       
-      df_tmp$Model <- substr(file, 1, nchar(file)-4)
+      df_tmp$Model <- substr(basename(file), 1, nchar(file)-4)
       
       df_all <- rbind(df_all, df_tmp)
       
@@ -159,13 +161,67 @@ plot_boxplots <- function(path_testdata, path_save, file_save) {
   
   plot_all <- function(df_all, plot_title) {
     
-    # Plot KGE
+    # Plot KGE2009
     
-    a <- ggplot(data = df_all, aes(x = Model, y = KGE))
+    a <- ggplot(data = df_all, aes(x = Model, y = KGE2009))
     
     a <- a + geom_boxplot(outlier.colour = "red", fill = "white", colour = "blue")
     
-    a <- a + ylim(min(min(df_all$KGE)-0.1, 0), 1.1)
+    # a <- a + ylim(min(min(df_all$KGE2009)-0.1, 0), 1.1)
+    
+    a <- a + ylim(0, 1.02)
+    
+    a <- a + ggtitle(plot_title)
+    
+    print(a)
+    
+    # Plot KGE2012
+    
+    a <- ggplot(data = df_all, aes(x = Model, y = KGE2012))
+    
+    a <- a + geom_boxplot(outlier.colour = "red", fill = "white", colour = "blue")
+    
+    a <- a + ylim(min(min(df_all$KGE2012)-0.1, 0), 1.1)
+    
+    a <- a + ggtitle(plot_title)
+    
+    print(a)
+    
+    # Plot r
+    
+    a <- ggplot(data = df_all, aes(x = Model, y = r))
+    
+    a <- a + geom_boxplot(outlier.colour = "red", fill = "white", colour = "blue")
+    
+    a <- a + ggtitle(plot_title)
+    
+    print(a)
+    
+    # Plot Alpha
+    
+    a <- ggplot(data = df_all, aes(x = Model, y = Alpha))
+    
+    a <- a + geom_boxplot(outlier.colour = "red", fill = "white", colour = "blue")
+    
+    a <- a + ggtitle(plot_title)
+    
+    print(a)
+    
+    # Plot Beta
+    
+    a <- ggplot(data = df_all, aes(x = Model, y = Beta))
+    
+    a <- a + geom_boxplot(outlier.colour = "red", fill = "white", colour = "blue")
+    
+    a <- a + ggtitle(plot_title)
+    
+    print(a)
+    
+    # Plot Gamma
+    
+    a <- ggplot(data = df_all, aes(x = Model, y = Gamma))
+    
+    a <- a + geom_boxplot(outlier.colour = "red", fill = "white", colour = "blue")
     
     a <- a + ggtitle(plot_title)
     
@@ -177,7 +233,9 @@ plot_boxplots <- function(path_testdata, path_save, file_save) {
     
     a <- a + geom_boxplot(outlier.colour = "red", fill = "white", colour = "blue")
     
-    a <- a + ylim(min(min(df_all$NSE)-0.1, 0), 1.1)
+    # a <- a + ylim(min(min(df_all$NSE)-0.1, 0), 1.1)
+    
+    a <- a + ylim(0, 1.02)
     
     a <- a + ggtitle(plot_title)
     
@@ -247,7 +305,9 @@ plot_boxplots <- function(path_testdata, path_save, file_save) {
   
   path_calib <- "24h/results_calib"
   
-  df_all <- read_data(path_calib)
+  files_data <- tk_choose.files(path_calib)
+  
+  df_all <- read_data(path_calib, files_data)
   
   plot_all(df_all, plot_title)
   
@@ -257,7 +317,7 @@ plot_boxplots <- function(path_testdata, path_save, file_save) {
   
   path_valid <- "24h/results_valid"
   
-  df_all <- read_data(path_valid)
+  df_all <- read_data(path_valid, files_data)
   
   plot_all(df_all, plot_title)
   

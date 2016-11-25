@@ -99,7 +99,7 @@ for (i in 1:length(regine_main)) {
 metadata <- get_metadata()
 metadata <- metadata[metadata$regine_main %in% regine_main_final, ]
 
-write.table(metadata, file = "../Metadata.txt", sep = ",", row.names = FALSE, quote = FALSE)
+write.table(metadata, file = "../Metadata.txt", sep = ";", row.names = FALSE, quote = FALSE)
 
 
 

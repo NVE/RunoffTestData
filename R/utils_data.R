@@ -64,9 +64,11 @@ load_vann_res <- function(path_model) {
 }
 
 
-# Read simulated discharge from HBV models
+# Read simulated discharge from HBV model (fortran code)
 
 load_hbv_res <- function(path_model) {
+  
+  # Load data
   
   files_data <- list.files(path_model)
   
@@ -78,7 +80,7 @@ load_hbv_res <- function(path_model) {
     
     tmp <- read.table(paste(path_model, "/", files_data[ifile], sep = ""), header = TRUE)
     
-    list_data[[ifile]]$q_sim <- tmp$Qim_m3s
+    list_data[[ifile]]$q_sim <- tmp$Qim_m3s    ##### Is mm/day even though name suggests m3/day
     
   }
   
@@ -86,7 +88,7 @@ load_hbv_res <- function(path_model) {
   
   q_sim <- data.frame(as.Date(tmp$dato), q_mat)
   
-  station_names <- gsub(".Qsim_mm.txt", "", files_data)
+  station_names <- gsub(".Qsim.txt", "", files_data)
   
   colnames(q_sim) <- c("Time", station_names)
   

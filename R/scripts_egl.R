@@ -38,7 +38,7 @@ q_obs <- load_runoff_obs(path_obs)
 
 # Load simulated runoff (only keep those who match observations)
 
-path_tmp <- file.path(path_sim, paste(period, "_txt", sep = ""), "mmday")
+path_tmp <- file.path(path_sim, paste(period, "_txt", sep = ""), "m3s")  ### Is mm/day even though name suggests m3/day
 
 q_sim <- load_hbv_res(path_tmp)
 
@@ -65,7 +65,7 @@ q_obs <- load_runoff_obs(path_obs)
 
 # Load simulated runoff (only keep those who match observations)
 
-path_tmp <- file.path(path_sim, paste(period, "_txt", sep = ""), "mmday")
+path_tmp <- file.path(path_sim, paste(period, "_txt", sep = ""), "m3s")  ### Is mm/day even though name suggests m3/day
 
 q_sim <- load_hbv_res(path_tmp)
 

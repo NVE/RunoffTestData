@@ -13,15 +13,15 @@ source("R/utils_data.R")
 
 # Add information about your model
 
-model_name <- "HBV"
-model_version <- "20161125"
-model_desc <- "Standard input, pest calibration"
-model_input <- "SeNorge 2.0"
-model_res <- "//hdata/fou/jmg/hbv/"
+model_name <- "DDD"
+model_version <- "20161202"
+model_desc <- "No extra information"
+model_input <- "Probably SeNorge v2.0"
+model_res <- "//nve/fil/h/HB/HB-modellering/DDDtestbenk/DDD_kalibrering/Jansmaskin/"
 
 # Path to observation data and simulation results
 
-path_sim <- "//hdata/fou/jmg/hbv/"
+path_sim <- "//nve/fil/h/HB/HB-modellering/DDDtestbenk/DDD_kalibrering/Jansmaskin/"
 
 
 ##############################################################################################
@@ -38,13 +38,13 @@ q_obs <- load_runoff_obs(path_obs)
 
 # Load simulated runoff (only keep those who match observations)
 
-path_tmp <- file.path(path_sim, paste(period, "_txt", sep = ""), "m3s")  ### Is mm/day even though name suggests m3/day
+path_tmp <- file.path(path_sim, period)
 
-q_sim <- load_hbv_res(path_tmp)
+q_sim <- load_ddd_res(path_tmp)
 
-ikeep <- which(colnames(q_sim) %in% colnames(q_obs))
+ikeep <- which(colnames(q_obs) %in% colnames(q_sim))
 
-q_sim <- q_sim[, ikeep]
+q_obs <- q_obs[, ikeep]
 
 # Run analysis
 
@@ -65,13 +65,13 @@ q_obs <- load_runoff_obs(path_obs)
 
 # Load simulated runoff (only keep those who match observations)
 
-path_tmp <- file.path(path_sim, paste(period, "_txt", sep = ""), "m3s")  ### Is mm/day even though name suggests m3/day
+path_tmp <- file.path(path_sim, period)
 
-q_sim <- load_hbv_res(path_tmp)
+q_sim <- load_ddd_res(path_tmp)
 
-ikeep <- which(colnames(q_sim) %in% colnames(q_obs))
+ikeep <- which(colnames(q_obs) %in% colnames(q_sim))
 
-q_sim <- q_sim[, ikeep]
+q_obs <- q_obs[, ikeep]
 
 # Run analysis
 

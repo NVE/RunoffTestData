@@ -181,7 +181,9 @@ plot_boxplots <- function(path_testdata, path_save, file_save) {
     
     a <- a + geom_boxplot(outlier.colour = "red", fill = "white", colour = "blue")
     
-    a <- a + ylim(min(min(df_all$KGE2012)-0.1, 0), 1.1)
+    # a <- a + ylim(min(min(df_all$KGE2012)-0.1, 0), 1.1)
+    
+    a <- a + ylim(0, 1.02)
     
     a <- a + ggtitle(plot_title)
     
@@ -192,6 +194,8 @@ plot_boxplots <- function(path_testdata, path_save, file_save) {
     a <- ggplot(data = df_all, aes(x = Model, y = r))
     
     a <- a + geom_boxplot(outlier.colour = "red", fill = "white", colour = "blue")
+    
+    a <- a + ylim(0, 1.02)
     
     a <- a + ggtitle(plot_title)
     
@@ -247,7 +251,9 @@ plot_boxplots <- function(path_testdata, path_save, file_save) {
     
     a <- a + geom_boxplot(outlier.colour = "red", fill = "white", colour = "blue")
     
-    a <- a + ylim(min(min(df_all$NSE_bench)-0.1, 0), 1.1)
+    # a <- a + ylim(min(min(df_all$NSE_bench)-0.1, 0), 1.1)
+    
+    a <- a + ylim(0, 1.02)
     
     a <- a + ggtitle(plot_title)
     

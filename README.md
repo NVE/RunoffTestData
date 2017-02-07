@@ -4,7 +4,7 @@ Runoff data for testing hydrological models at NVE
 This repository contains:
 
 * Runoff data for standardized evaluation of hydrological models (see folders [/24h/qobs_calib](https://github.com/NVE/RunoffTestData/tree/master/24h/qobs_calib) and [/24h/qobs_valid](https://github.com/NVE/RunoffTestData/tree/master/24h/qobs_valid))
-* Runoff data syncronised with the meteorological synoptic 24 hour intervals 07 - 07 (see folders [/24h/0707_qobs_calib](https://github.com/NVE/RunoffTestData/tree/master/24h/0707_qobs_calib) and [/24h/qobs_valid](https://github.com/NVE/RunoffTestData/tree/master/24h/0707_qobs_valid))
+* Runoff data syncronised with the meteorological synoptic 24 hour intervals 07 - 07 (see folders [/24h/0707_qobs_calib](https://github.com/NVE/RunoffTestData/tree/master/24h/0707_qobs_calib) and [/24h/0707_qobs_valid](https://github.com/NVE/RunoffTestData/tree/master/24h/0707_qobs_valid))
 * Functions for computing model performance metrics (see folder [/R](https://github.com/NVE/RunoffTestData/tree/master/R))
 * Summary results for different models (see folders [/24h/results_calib](https://github.com/NVE/RunoffTestData/tree/master/24h/results_calib) and [/24h/results_valid](https://github.com/NVE/RunoffTestData/tree/master/24h/results_valid))
 

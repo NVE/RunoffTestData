@@ -1,0 +1,22 @@
+#!/user/bin/R
+# Source files
+
+
+# Describe model
+model_name <- "HBV"
+model_version <- "hs_PEST_trad"
+model_desc <- "Indata per height zone, PEST parameter estimation, PTday: 06(d-1) - 06d, Qday: 00-00d"
+model_input <- "SeNorge_v2_01"
+model_res <- "/home/egl/HbvKalibrering/GitStandardPest/tilGitHub"
+
+
+# Path to model results
+path_model <- "/home/egl/RunoffTestData/Example/"
+
+### Run analysis for calibration period ###
+period <- "calib"
+
+
+
+
+
